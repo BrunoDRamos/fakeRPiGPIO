@@ -69,26 +69,60 @@ class PWM(object):
 
 @print_data
 def setmode(*args, **kwargs):
+    '''
+    setmode(GPIO.BCM or GPIO.BOARD)
+        Sets the pin mode
+        BCM refers to the channel numbers on the Boardcom SOC
+        BOARD refers to pin numbers on the P1 header of the Raspberry Pi board
+    '''
     pass
 
 @print_data
 def setup(*args, **kwargs):
+    '''
+    setup(channel, GPIO.IN or channel, GPIO.OUT)
+        Setup channel as input or output
+        channel = number based on the numbering system specified (BCM or BOARD)
+    setup(chan_list, GPIO.OUT)
+        Set up more than one channel per call
+    '''
     pass
 
 @print_data
 def output(*args, **kwargs):
+    '''
+    output(channel, state)
+        set the output state of a GPIO pin
+        channel = number based on the numbering system specified (BCM or BOARD)
+    '''
     pass
 
 @print_data
 def input(*args, **kwargs):
+    '''
+    input(channel)
+        read the value of a GPIO pin
+        channel = number based on the numbering system specified (BCM or BOARD)
+    '''
     pass
 
 @print_data
 def cleanup(*args, **kwargs):
+    '''
+    cleanup()
+        clean up used resources at the end of script
+    cleanup(channel)
+        clean up individual, a list or a tuple of channels
+    '''
     pass
 
 @print_data
 def wait_for_edge(*args, **kwargs):
+    '''
+    wait_for_edge(channel, GPIO.RISING or GPIO.FALLING or GPIO.BOTH)
+        block program execution until an edge is detected
+        edge = name of a transition from HIGH to LOW (falling) or LOW to HIGH (rising)
+    '''
     pass
 
 @print_data
