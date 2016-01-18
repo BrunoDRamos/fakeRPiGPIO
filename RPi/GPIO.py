@@ -82,7 +82,7 @@ def setup(*args, **kwargs):
     '''
     setup(channel, GPIO.IN or channel, GPIO.OUT)
         Setup channel as input or output
-        channel = number based on the numbering system specified (BCM or BOARD)
+        channel: number based on the numbering system specified (BCM or BOARD)
     setup(chan_list, GPIO.OUT)
         Set up more than one channel per call
     '''
@@ -91,9 +91,10 @@ def setup(*args, **kwargs):
 @print_data
 def output(*args, **kwargs):
     '''
-    output(channel, state)
-        set the output state of a GPIO pin
-        channel = number based on the numbering system specified (BCM or BOARD)
+    output(channel, value)
+        set the output of a GPIO pin.
+        channel: number based on the numbering system specified (BCM or BOARD).
+        value: boolean
     '''
     pass
 
@@ -101,8 +102,9 @@ def output(*args, **kwargs):
 def input(*args, **kwargs):
     '''
     input(channel)
-        read the value of a GPIO pin
-        channel = number based on the numbering system specified (BCM or BOARD)
+        read the GPIO pin value.
+        channel: number based on the numbering system specified (BCM or BOARD).
+        returns boolean (true for HIGH value, false for LOW value).
     '''
     pass
 
@@ -119,24 +121,48 @@ def cleanup(*args, **kwargs):
 @print_data
 def wait_for_edge(*args, **kwargs):
     '''
-    wait_for_edge(channel, GPIO.RISING or GPIO.FALLING or GPIO.BOTH)
+    wait_for_edge(channel, edge)
         block program execution until an edge is detected
         edge = name of a transition from HIGH to LOW (falling) or LOW to HIGH (rising)
+        edge -> GPIO.RISING or GPIO.FALLING or GPIO.BOTH
+    wait_for_edge(channel, edge, timeout= # )
+        block program execution for a certain lenght of time (timeout in miliseconds)
     '''
     pass
 
 @print_data
 def event_detected(*args, **kwargs):
+    '''
+    event_detected(channel)
+        Reads events detected
+        Pins must first be configured using add_event_detect
+        returns boolean
+    '''
     pass
 
 @print_data
 def add_event_detect(*args, **kwargs):
+    '''
+    add_event_detect(channel, edge, callbak(OPTIONAL), bouncetime(OPTIOPNAL))
+        add event detection for a pin
+        edge -> GPIO.RISING or GPIO.FALLING or GPIO.BOTH
+    '''
     pass
 
 @print_data
 def add_event_callback(*args, **kwargs):
+    '''
+    add_event_callback(channel, callback, bouncetime(OPTIONAL))
+        Adds an event callback function.
+        callback: callback function to call on the event
+        bouncetime: minimun time between two callbacks (in milliseconds)
+    '''
     pass
 
 @print_data
 def remove_event_detect(*args, **kwargs):
+    '''
+    remove_event_detect(channel)
+        remove events detection for a pin
+    '''
     pass
